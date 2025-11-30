@@ -794,7 +794,6 @@
       font-weight: 600;
     }
 
-    /* Address line in footer */
     .footer-address {
       display: block;
       margin-top: 0.35rem;
@@ -970,7 +969,7 @@
       border-radius: 12px;
       font-size: 0.8rem;
       line-height: 1.5;
-      white-space: pre-wrap; /* allow multi-line, “paragraph-y” answers */
+      white-space: pre-wrap;
     }
 
     .chatbot-message.bot {
@@ -1427,7 +1426,6 @@
     <div class="chatbot-header">
       <div class="chatbot-header-left">
         <div class="chatbot-avatar">
-          <!-- chatbot avatar image -->
           <img src="images/yw-chat-logo.png" alt="YOU'RE WELCOME Consulting Chatbot logo" />
         </div>
         <div class="chatbot-title">
@@ -1455,14 +1453,13 @@
         <button type="button" class="chatbot-send" id="chatbot-send-btn">Send</button>
       </div>
       <div class="chatbot-hint">
-        Try asking: <span>“Can you give me a sample client onboarding workflow?”</span> or <span>“How should I map my processes?”</span>
+        Try asking: <span>“Where is YW Consulting?”</span> or <span>“Can you give me a sample client onboarding workflow?”</span>
       </div>
     </div>
   </div>
 
   <div class="chatbot-launcher">
     <button class="chatbot-button" type="button" id="chatbot-toggle" aria-label="Open YOU'RE WELCOME Consulting chatbot">
-      <!-- launcher image -->
       <img src="images/yw-chat-logo.png" alt="Chatbot logo" />
     </button>
   </div>
@@ -1534,6 +1531,9 @@
       patterns: [
         "what is you're welcome consulting",
         "what is youre welcome consulting",
+        "what is your welcome consulting",
+        "what is yw consulting",
+        "what is ywc",
         "what do you do",
         "what does you're welcome consulting do",
         "who are you",
@@ -1541,13 +1541,17 @@
         "tell me about you're welcome"
       ],
       answer:
-        "You’re Welcome Consulting is a woman-owned consulting firm based in Daytona Beach, Florida. We help service-based and owner-led businesses with strategy, operations, workflows, client experience design, and custom support so your growth actually feels manageable."
+        "You're Welcome Consulting is a Florida-registered LLC based in Daytona Beach, Florida. We’re a woman-owned consulting firm that helps service-based and owner-led businesses with strategy, operations, workflows, client experience design, and overall structure so growth feels focused and sustainable instead of chaotic."
     },
     {
       id: "where-located",
       patterns: [
         "where are you located",
         "where is you're welcome consulting",
+        "where is youre welcome consulting",
+        "where is your welcome consulting",
+        "where is yw consulting",
+        "where is ywc",
         "what is your address",
         "where are you based",
         "location"
@@ -1562,12 +1566,13 @@
         "who is the owner",
         "who is the ceo",
         "who runs you're welcome consulting",
+        "who runs yw consulting",
         "owner",
         "founder",
         "woman owned"
       ],
       answer:
-        "You’re Welcome Consulting is owned and led by Maria J. Pavano. It’s a woman-owned consulting firm with a strong focus on practical strategy, structure, and sustainable growth."
+        "You're Welcome Consulting is owned and led by Maria J. Pavano. The company is registered in Florida as an LLC with Maria listed as the authorized person and registered agent."
     },
     {
       id: "when-founded",
@@ -1575,10 +1580,37 @@
         "when were you founded",
         "when did you start",
         "how long have you been in business",
-        "what year were you founded"
+        "what year were you founded",
+        "when was yw consulting formed"
       ],
       answer:
-        "You’re Welcome Consulting was formed in early 2024 as a Florida limited liability company and has been actively supporting clients since then."
+        "You're Welcome Consulting was officially formed as a Florida limited liability company in early 2024, with the filing dated January 29, 2024. However our consultants have 10 or more years experience in the field!"
+    },
+    {
+      id: "legal-info",
+      patterns: [
+        "are you legit",
+        "company information",
+        "company info",
+        "legal info",
+        "are you registered",
+        "are you an llc",
+        "business details"
+      ],
+      answer:
+        "Legally, we operate as YOU'RE WELCOME CONSULTING LLC, a Florida-registered limited liability company. Our principal address on file is 390 Golf Blvd, Daytona Beach, FL 32118, and the company is registered under Maria J. Pavano as the authorized person."
+    },
+    {
+      id: "business-status",
+      patterns: [
+        "are you active",
+        "is the company legitimate",
+        "company status",
+        "is your business active",
+        "are you still in business"
+      ],
+      answer:
+        "Yes. You're Welcome Consulting is an active Florida LLC in good standing according to state business registry records."
     },
     {
       id: "services-general",
@@ -1587,10 +1619,11 @@
         "what do you offer",
         "services",
         "how can you help my business",
-        "what can you help with"
+        "what can you help with",
+        "what kind of services"
       ],
       answer:
-        "We focus on strategy, project and operations planning, workflow design, client experience, communication frameworks, and overall business structure. In plain English: we help you untangle the chaos, make a clear plan, and move forward in a focused, sustainable way."
+        "We help businesses with strategic planning, project and operations planning, workflow and process design, client experience, communication frameworks, and overall business structure. In plain English: we help you untangle the chaos, make a clear plan, and move forward in a focused, sustainable way."
     },
     {
       id: "custom-webpages",
@@ -1606,7 +1639,7 @@
         "do you make websites"
       ],
       answer:
-        "Yes—You’re Welcome Consulting creates custom webpages tailored to each client’s needs. That can include clean, modern marketing sites, service pages, and supportive pages that match your brand, your systems, and the way you actually work."
+        "Yes—You're Welcome Consulting creates custom webpages tailored to each client’s needs. That can include clean, modern marketing sites, service pages, and supporting pages that match your brand, your systems, and the way you actually work."
     },
     {
       id: "daytona-beach",
@@ -1614,10 +1647,12 @@
         "daytona beach",
         "in florida",
         "local to daytona",
-        "are you in florida"
+        "are you in florida",
+        "are you in daytona",
+        "daytona beach fl"
       ],
       answer:
-        "We’re proudly based in Daytona Beach, Florida, and we work with both local and remote clients. Many engagements are virtual, but local conversations are always welcome."
+        "We’re proudly based in Daytona Beach, Florida, and we work with both local and remote clients. Many engagements are fully virtual, but local conversations are always welcome."
     },
     {
       id: "types-of-clients",
@@ -1670,7 +1705,7 @@
         "Most of our work is done virtually via online meetings and shared documentation. In some cases, in-person options can be discussed depending on location and scope."
     },
 
-    // ===== Workflows: concepts and processes =====
+    // Workflows: concepts and processes
     {
       id: "workflow-definition",
       patterns: [
@@ -1690,13 +1725,14 @@
         "how do i design a workflow",
         "how do i map a process",
         "steps to create a workflow",
-        "how should i map my processes"
+        "how should i map my processes",
+        "how do i create a process"
       ],
       answer:
         "To build a workflow, we usually walk through five steps: 1) Choose one process (for example, client onboarding). 2) Brain-dump every step you currently take, in rough order. 3) Clean it up—remove duplicate steps, clarify who does what, and name each step clearly. 4) Add triggers and outputs (what starts the workflow and what “done” looks like). 5) Decide where templates, checklists, or automation could make the workflow repeatable. The result is a simple map you can share with your team."
     },
 
-    // ===== Custom workflows (YW-specific) =====
+    // Custom workflows (YW-specific)
     {
       id: "custom-workflows",
       patterns: [
@@ -1714,7 +1750,7 @@
         "When we create custom workflows with clients, we start by mapping the real steps your team takes—from first contact through delivery and follow-up. Then we simplify: remove unnecessary steps, clarify who does what, and decide which tasks can be automated or templated. For example, a simple service workflow might be:\n\n1) Lead comes in via form or email.\n2) Auto-response goes out with basic info and a scheduling link.\n3) Discovery call is held and notes are captured in one place.\n4) Proposal or summary email is sent within a set timeframe.\n5) Once accepted, a standard onboarding checklist is triggered.\n\nThe goal is a clear, repeatable path that reduces errors, speeds things up, and makes ownership obvious instead of vague."
     },
 
-    // ===== Concrete workflow examples =====
+    // Concrete workflow examples
     {
       id: "workflow-example-onboarding",
       patterns: [
@@ -1750,7 +1786,7 @@
         "For internal operations (like billing or admin), a workflow example could be:\n\n1) Time or deliverables logged by the team.\n2) At a set time each week/month, invoices are generated from that log.\n3) Invoices are reviewed for accuracy by one person.\n4) Invoices are emailed or sent through your billing platform.\n5) Payments are tracked; overdue invoices trigger a friendly reminder template.\n6) Once paid, the project or period is marked as closed and metrics are updated.\n\nWe help you formalize these kinds of internal workflows so they stop living only in someone’s memory."
     },
 
-    // ===== Consulting techniques =====
+    // Consulting techniques
     {
       id: "consulting-techniques",
       patterns: [
@@ -1765,7 +1801,7 @@
         "Good consulting is more than dropping advice and disappearing. Our approach usually follows a loop: clarify goals, diagnose what’s really happening, co-design solutions with you, support implementation, and then review what’s working. We use tools like process mapping, value-stream style thinking, prioritization frameworks, and simple scorecards so you can actually see progress instead of guessing."
     },
 
-    // ===== Impact of hiring a consultant =====
+    // Impact of hiring a consultant
     {
       id: "consultant-impact",
       patterns: [
@@ -1780,7 +1816,7 @@
         "Hiring a consultant gives you focused expertise and an outside perspective. Practically, that can mean: spotting blind spots, avoiding costly mistakes, speeding up decisions, reducing reliance on the owner, and turning vague ideas into a clear plan. A good consultant often pays for themselves through time saved, smoother operations, and better-quality decisions."
     },
 
-    // ===== General business management info =====
+    // General business management info
     {
       id: "business-management",
       patterns: [
@@ -1866,8 +1902,8 @@
       return "Think of managing a business as a loop: plan, organize, lead, and review. Set clear goals, make sure roles and resources match those goals, communicate and support your team, then track results and adjust. We help clients build simple systems around that loop.";
     }
 
-    // Generic, but still helpful, fallback
-    return "Great question. Without seeing the full context of your business, I’d start by clarifying your goals, mapping what’s already on your plate, and then designing a step-by-step plan that fits your capacity. If you’d like tailored recommendations, reach out through the contact form and we can dig into your specific situation.";
+    // Generic fallback
+    return "Great question! Using the Contact Card, submit your information and a consultant will contact you within 48 hours to discuss any questions you may have!";
   }
 
   function handleChatSubmit() {
