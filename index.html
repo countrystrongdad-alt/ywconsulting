@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YOU'RE WELCOME Consulting</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Palette adjusted to match new logo: indigo, black, white */
+      --bg: #000000;                     /* black background */
+      --surface-soft: #050505;           /* near-black surface */
+      --surface: #111111;                /* elevated cards */
+      --border-subtle: rgba(255, 255, 255, 0.18);
+
+      /* Logo-inspired accents */
+      --indigo: #4B0082;                 /* main brand color */
+      --white: #ffffff;
+      --silver: #d4d4d4;
+
+      /* Map old accent tokens to new palette */
+      --cyan: var(--indigo);
+      --pink: var(--indigo);
+      --yellow: var(--white);
+      --lime: var(--silver);
+
+      /* Text */
+      --text-main: #ffffff;
+      --text-muted: #e2e0e1;
+      --text-soft: #a3a3a3;
+
+      --radius-lg: 18px;
+      --shadow-soft: 0 20px 50px rgba(0, 0, 0, 0.65);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text-main);
+      background: var(--surface-soft); /* unified background */
+      min-height: 100vh;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    section {
+      padding: 4rem 0;
+    }
+
+    .stock-photo {
+      width: 100%;
+      border-radius: 16px;
+      object-fit: cover;
+      max-height: 240px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+      margin-bottom: 1rem;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.97),
+        rgba(0, 0, 0, 0.9)
+      );
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+      gap: 1rem;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-mark {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 1px solid var(--indigo);
+      background: #050506;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
+    }
+
+    .nav-titles {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .nav-title-main {
+      font-family: "Playfair Display", serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--indigo);
+      -webkit-text-stroke: 0px #ffffff;
+      text-stroke: 1px #ffffff;
+    }
+
+    .nav-title-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      position: relative;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color 0.15s ease;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.35rem;
+      width: 0;
+      height: 2px;
+      background: var(--indigo);
+      transition: width 0.18s ease;
+    }
+
+    nav a:hover {
+      color: var(--indigo);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      padding-top: 4.5rem;
+      padding-bottom: 3.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 2.75rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.25rem 0.8rem;
+      border-radius: 999px;
+      background: #ffffff;              /* white pill */
+      border: 1px solid #ffffff;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--indigo);
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--indigo);
+    }
+
+    .hero h1 {
+      margin-top: 1.2rem;
+      font-size: clamp(2.4rem, 4vw, 3.1rem);
+      line-height: 1.08;
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .hero h1 span {
+      color: var(--indigo);
+      -webkit-text-stroke: 0;
+      text-stroke: 0;
+    }
+
+    .hero-tagline {
+      margin-top: 0.6rem;
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+
+    .hero p.lead {
+      margin-top: 1.4rem;
+      font-size: 1rem;
+      max-width: 36rem;
+      color: var(--text-muted);
+    }
+
+    .hero-actions {
+      margin-top: 1.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.8rem 1.5rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      cursor: pointer;
+      background: none;
+      color: #f9fafb;
+      transition:
+        transform 0.12s ease,
+        box-shadow 0.12s ease,
+        background 0.12s ease,
+        border-color 0.12s ease,
+        color 0.12s ease;
+    }
+
+    .btn-primary {
+      background: var(--indigo);
+      color: #ffffff;
+      border-color: transparent;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75);
+    }
+
+    .btn-primary:hover {
+      background: #330058;
+      color: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 22px 52px rgba(0, 0, 0, 0.9);
+    }
+
+    .btn-outline {
+      border-color: rgba(229, 231, 235, 0.7);
+      color: var(--text-muted);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--indigo);
+      color: var(--indigo);
+      background: transparent;
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
+      transform: translateY(-1px);
+    }
+
+    .hero-meta {
+      margin-top: 1.1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.3rem;
+      font-size: 0.85rem;
+      color: var(--text-soft);
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-meta span::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--lime);
+    }
+
+    .hero-card {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 1.5rem 1.4rem;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+      color: #f9fafb;
+    }
+
+    .hero-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--indigo);
+      box-shadow: 0 22px 52px rgba(0, 0, 0, 0.9);
+    }
+
+    .hero-card h3 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--indigo);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .hero-list {
+      list-style: none;
+      font-size: 0.88rem;
+      color: #f9fafb;
+    }
+
+    .hero-list li {
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+    }
+
+    .hero-list li::before {
+      content: "▹";
+      color: var(--indigo);
+      font-size: 0.9rem;
+    }
+
+    .section-title {
+      text-align: left;
+      margin-bottom: 2.2rem;
+    }
+
+    .section-title h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--indigo);
+      -webkit-text-stroke: 0px #ffffff;
+      text-stroke: 1.5px #ffffff;
+    }
+
+    .section-title p {
+      margin-top: 0.5rem;
+      font-size: 0.96rem;
+      color: var(--text-muted);
+      max-width: 34rem;
+    }
+
+    /* ABOUT */
+    #about {
+      border-top: 1px solid var(--border-subtle);
+      background: var(--surface-soft);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .about-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+
+    .about-pill {
+      font-size: 0.78rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(229, 231, 235, 0.8);
+      color: var(--text-soft);
+      background: rgba(15, 23, 42, 0.85);
+      transition: border-color 0.12s ease, color 0.12s ease, background 0.12s ease;
+    }
+
+    .about-pill:hover {
+      border-color: var(--indigo);
+      color: var(--indigo);
+      background: #050506;
+    }
+
+    .about-card {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 1.3rem 1.4rem;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.9rem;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+      color: #f9fafb;
+      margin-top: -1.4rem; /* raises Engagement Snapshot to align with About text */
+    }
+
+    .about-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--indigo);
+      box-shadow: 0 22px 52px rgba(0, 0, 0, 0.9);
+    }
+
+    .about-card h3 {
+      font-size: 1.02rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .about-card-row {
+      margin-bottom: 0.7rem;
+    }
+
+    .about-card-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-bottom: 0.15rem;
+    }
+
+    .about-card-value {
+      font-size: 0.88rem;
+      color: #f9fafb;
+    }
+
+    /* CLIENTS */
+    #clients {
+      background: var(--surface-soft);
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .clients-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.3rem;
+      align-items: start;
+    }
+
+    .client-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.1rem;
+    }
+
+    .client-list-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-soft);
+      margin-bottom: 0.75rem;
+    }
+
+    .client-card {
+      background: var(--surface);
+      border-radius: 14px;
+      border: 1px solid var(--border-subtle);
+      padding: 1rem 1rem;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6);
+      font-size: 0.9rem;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+      color: #f9fafb;
+    }
+
+    .client-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--indigo);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.9);
+    }
+
+    .client-card h3 {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: #f9fafb;
+      margin-bottom: 0.2rem;
+    }
+
+    .client-industry {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .client-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .client-aside {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 1.4rem 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+    }
+
+    .client-aside:hover {
+      transform: translateY(-2px);
+      border-color: var(--indigo);
+      box-shadow: 0 22px 52px rgba(0, 0, 0, 0.9);
+    }
+
+    /* TESTIMONIALS */
+    #testimonials {
+      background: var(--surface-soft);
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .testimonial {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 1.2rem 1.25rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+    }
+
+    .testimonial:hover {
+      transform: translateY(-2px);
+      border-color: var(--indigo);
+      box-shadow: 0 22px 52px rgba(0, 0, 0, 0.9);
+    }
+
+    .testimonial::before {
+      content: "“";
+      position: absolute;
+      top: -0.6rem;
+      left: 0.6rem;
+      font-size: 3.2rem;
+      color: rgba(156, 163, 175, 0.7);
+      pointer-events: none;
+    }
+
+    .testimonial-quote {
+      margin-bottom: 0.6rem;
+      font-style: italic;
+    }
+
+    .testimonial-name {
+      font-weight: 600;
+      color: #f9fafb;
+      font-size: 0.9rem;
+    }
+
+    .testimonial-role {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    /* FAQ */
+    #faq {
+      background: var(--surface-soft);
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 2.25rem;
+      align-items: start;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .faq-item {
+      border-radius: 12px;
+      border: 1px solid rgba(229, 231, 235, 0.3);
+      background: #050506;
+      padding: 0.75rem 0.9rem;
+      transition:
+        border-color 0.12s ease,
+        box-shadow 0.12s ease,
+        transform 0.12s ease,
+        background 0.12s ease;
+    }
+
+    .faq-item:hover {
+      border-color: var(--indigo);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.6);
+      transform: translateY(-1px);
+      background: #090909;
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+    }
+
+    .faq-question h3 {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-main);
+    }
+
+    .faq-toggle {
+      font-size: 1.1rem;
+      color: var(--indigo);
+      transition: transform 0.12s ease;
+    }
+
+    .faq-answer {
+      margin-top: 0.4rem;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      display: none;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    .faq-item.open .faq-toggle {
+      transform: rotate(90deg);
+    }
+
+    .faq-aside {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 1.2rem 1.25rem;
+      font-size: 0.88rem;
+      box-shadow: var(--shadow-soft);
+      color: var(--text-muted);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+    }
+
+    .faq-aside:hover {
+      transform: translateY(-2px);
+      border-color: var(--indigo);
+      box-shadow: 0 22px 52px rgba(0, 0, 0, 0.9);
+    }
+
+    /* CONTACT */
+    #contact {
+      background: var(--surface-soft);
+      border-top: 1px solid var(--border-subtle);
+      padding-bottom: 3.5rem;
+    }
+
+    .contact-card {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 1.4rem 1.5rem;
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: flex-start;
+      font-size: 0.9rem;
+      color: #f9fafb;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .field label {
+      font-size: 0.8rem;
+      margin-bottom: 0.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+    }
+
+    .field input,
+    .field textarea {
+      padding: 0.6rem 0.7rem;
+      border-radius: 9px;
+      border: 1px solid rgba(229, 231, 235, 0.5);
+      background: #050506;
+      color: #f9fafb;
+      font: inherit;
+      resize: vertical;
+      transition: border-color 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: #6b7280;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      outline: none;
+      border-color: var(--indigo);
+      box-shadow: 0 0 0 1px rgba(75, 0, 130, 0.5);
+      background: #050506;
+    }
+
+    .contact-note {
+      margin-top: 0.3rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .contact-meta p {
+      margin-bottom: 0.5rem;
+      color: var(--text-muted);
+    }
+
+    .contact-meta strong {
+      color: var(--indigo);
+      font-weight: 500;
+    }
+
+    footer {
+      padding: 1.6rem 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      border-top: 1px solid var(--border-subtle);
+      background: var(--surface-soft);
+    }
+
+    footer span.brand {
+      color: var(--indigo);
+      font-weight: 600;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid,
+      .faq-grid,
+      .contact-card,
+      .clients-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        gap: 0.9rem;
+        font-size: 0.78rem;
+      }
+
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+    }
+
+    /* CHATBOT */
+    .chatbot-launcher {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 60;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chatbot-button {
+      width: 64px;
+      height: 64px;
+      border-radius: 999px;
+      border: 1px solid var(--indigo);
+      background: radial-gradient(circle at 0% 0%, rgba(75, 0, 130, 0.35), transparent),
+                  radial-gradient(circle at 100% 100%, rgba(75, 0, 130, 0.2), transparent),
+                  #050506;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.95);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+    }
+
+    .chatbot-button img {
+      width: 100%;
+      height: 100%;
+      border-radius: 999px;
+      object-fit: cover;
+    }
+
+    .chatbot-button:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 22px 52px rgba(0, 0, 0, 1);
+      border-color: var(--indigo);
+    }
+
+    .chatbot-window {
+      position: fixed;
+      bottom: 6.5rem;
+      right: 1.5rem;
+      width: 340px;
+      max-height: 480px;
+      background: var(--surface);
+      border-radius: 18px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 1);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 60;
+      color: #f9fafb;
+    }
+
+    .chatbot-window.open {
+      display: flex;
+    }
+
+    .chatbot-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0.9rem;
+      border-bottom: 1px solid var(--border-subtle);
+      background: radial-gradient(circle at 0% 0%, rgba(75, 0, 130, 0.22), transparent),
+                  radial-gradient(circle at 100% 100%, rgba(75, 0, 130, 0.18), transparent),
+                  #050506;
+    }
+
+    .chatbot-header-left {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .chatbot-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid var(--indigo);
+      overflow: hidden;
+      background: #050506;
+      flex-shrink: 0;
+    }
+
+    .chatbot-title {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chatbot-title span:first-child {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--indigo);
+    }
+
+    .chatbot-title span:last-child {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    .chatbot-close {
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 0.1rem 0.3rem;
+      border-radius: 999px;
+      transition: background 0.12s ease, color 0.12s ease;
+    }
+
+    .chatbot-close:hover {
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--indigo);
+    }
+
+    .chatbot-messages {
+      padding: 0.9rem;
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      background: radial-gradient(circle at 0% 100%, rgba(75, 0, 130, 0.08), transparent),
+                  radial-gradient(circle at 100% 0%, rgba(75, 0, 130, 0.08), transparent),
+                  #050506;
+    }
+
+    .chatbot-message {
+      max-width: 80%;
+      padding: 0.55rem 0.7rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+
+    .chatbot-message.bot {
+      align-self: flex-start;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(229, 231, 235, 0.4);
+      color: var(--text-muted);
+    }
+
+    .chatbot-message.user {
+      align-self: flex-end;
+      background: var(--indigo);
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    .chatbot-footer {
+      padding: 0.6rem 0.7rem;
+      border-top: 1px solid var(--border-subtle);
+      background: #050506;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .chatbot-input-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .chatbot-input {
+      flex: 1;
+      border-radius: 999px;
+      border: 1px solid rgba(229, 231, 235, 0.5);
+      background: #050506;
+      color: #f9fafb;
+      padding: 0.45rem 0.8rem;
+      font-size: 0.8rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .chatbot-input::placeholder {
+      color: #6b7280;
+    }
+
+    .chatbot-input:focus {
+      border-color: var(--indigo);
+      box-shadow: 0 0 0 1px rgba(75, 0, 130, 0.5);
+    }
+
+    .chatbot-send {
+      border-radius: 999px;
+      border: none;
+      padding: 0.45rem 0.9rem;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+      cursor: pointer;
+      background: var(--indigo);
+      color: #ffffff;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.9);
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .chatbot-send:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 1);
+      background: #330058;
+    }
+
+    .chatbot-hint {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-align: left;
+    }
+
+    .chatbot-hint span {
+      color: var(--indigo);
+    }
+
+    @media (max-width: 600px) {
+      .chatbot-window {
+        right: 0.75rem;
+        left: 0.75rem;
+        width: auto;
+      }
+
+      .chatbot-launcher {
+        right: 1rem;
+        bottom: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <div class="nav-left">
+        <div class="logo-mark">
+          <img src="logo.png" alt="YOU'RE WELCOME Consulting logo" />
+        </div>
+        <div class="nav-titles">
+          <div class="nav-title-main">YOU'RE WELCOME Consulting</div>
+          <div class="nav-title-sub">Clarity. Structure. Sustainable Growth.</div>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#clients">Clients</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-kicker">
+          <span class="dot"></span>
+          CONSULTING FOR MODERN BUSINESSES, BIG AND SMALL
+        </div>
+
+        <h1>Professional guidance for <span>real-world</span> businesses.</h1>
+
+        <p class="hero-tagline">
+          You're Welcome Consulting helps owners and teams turn ideas into clear plans,
+          responsible decisions, and sustainable momentum.
+        </p>
+
+        <p class="lead">
+          We specialize in practical strategy, streamlined operations, and
+          implementation support tailored to the way you actually work. No buzzwords.
+          No generic playbooks. Just thoughtful partnership built around your goals.
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+            Schedule a Consultation
+          </button>
+          <button class="btn btn-outline" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+            Learn More
+          </button>
+        </div>
+
+        <div class="hero-meta">
+          <span>Strategy and planning support</span>
+          <span>Operations and systems guidance</span>
+          <span>Owner-focused, people-first approach</span>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <img
+          class="stock-photo"
+          src="images/conference-meeting.jpg"
+          alt="Business meeting in a modern conference room"
+        />
+        <h3>What We Do</h3>
+        <p>
+          We partner with all businesses, service providers, and multi-passionate
+          owners to clarify priorities, design practical systems, and support
+          execution at a sustainable pace.
+        </p>
+        <ul class="hero-list">
+          <li>Clarify strategic direction and priorities</li>
+          <li>Simplify processes, tools, and workflows</li>
+          <li>Translate goals into realistic action plans</li>
+          <li>Offer ongoing support as your business evolves</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>About Us</h2>
+        <p>A consulting partner built for owners who value practicality, transparency, and thoughtful collaboration.</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            At You’re Welcome Consulting, we believe that transformational business growth begins with bold ideas,
+            strategic thinking, and a personalized approach. As a woman-owned and operated consulting firm, we bring a
+            fresh, innovative perspective to every project we take on. Our team is driven by creativity, professionalism,
+            and an unwavering commitment to helping organizations overcome challenges, elevate their operations, and reach
+            their fullest potential.
+          </p>
+          <p>
+            With expertise spanning business development, operational strategy, branding, workflow optimization, and
+            organizational structure, You’re Welcome Consulting offers a modern, forward-thinking approach to today’s
+            business demands. Our mission is simple: empower you with the tools, clarity, and confidence you need to succeed.
+          </p>
+
+          <div class="about-pill-row">
+            <div class="about-pill">Woman-owned & forward-thinking</div>
+            <div class="about-pill">Strategy, structure, and branding</div>
+            <div class="about-pill">Custom, sustainable solutions</div>
+          </div>
+        </div>
+
+        <aside class="about-card">
+          <img class="stock-photo" src="images/woman-presentation.jpg" alt="Woman giving a presentation" />
+          <h3>Engagement Snapshot</h3>
+
+          <div class="about-card-row">
+            <div class="about-card-label">Approach</div>
+            <div class="about-card-value">Collaborative sessions, discovery, and actionable recommendations.</div>
+          </div>
+
+          <div class="about-card-row">
+            <div class="about-card-label">Focus Areas</div>
+            <div class="about-card-value">Strategy, workflows, team communication, client experience design.</div>
+          </div>
+
+          <div class="about-card-row">
+            <div class="about-card-label">Ideal Clients</div>
+            <div class="about-card-value">Owners ready for clarity, refinement, and sustainable growth.</div>
+          </div>
+
+          <div class="about-card-row">
+            <div class="about-card-label">Format</div>
+            <div class="about-card-value">Virtual sessions with documentation & next-step support.</div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENTS -->
+  <section id="clients">
+    <div class="container">
+      <div class="section-title">
+        <h2>Current Clients</h2>
+        <p>Organizations we support across wellness, creative services, and operations-focused industries.</p>
+      </div>
+
+      <div class="clients-grid">
+
+        <div>
+          <div class="client-list-title">Client List</div>
+          <div class="client-list">
+
+            <article class="client-card">
+              <h3>Greenway Wellness Group</h3>
+              <p class="client-industry">Health & Wellness Services</p>
+              <p class="client-note">
+                Engagement focusing on service clarity, workflow refinement, and communication improvements.
+              </p>
+            </article>
+
+            <article class="client-card">
+              <h3>Northbridge Studio Co.</h3>
+              <p class="client-industry">Creative & Professional Services</p>
+              <p class="client-note">
+                Support with project pipeline structure, prioritization, and opportunity decision-frameworks.
+              </p>
+            </article>
+
+            <article class="client-card">
+              <h3>Harborlight Property Partners</h3>
+              <p class="client-industry">Local Service & Operations</p>
+              <p class="client-note">
+                Operations mapping, team role clarity, and client experience consistency development.
+              </p>
+            </article>
+
+          </div>
+        </div>
+
+        <aside class="client-aside">
+          <h3>Client Focus</h3>
+          <p>
+            At You’re Welcome Consulting, our clients are at the center of everything we do. We approach every partnership
+            with deep responsibility, professionalism, and respect for your vision.
+          </p>
+          <p>
+            Innovation and creativity underscore every engagement. From streamlining operations to structuring growth,
+            we use modern tools, data-driven insights, and flexible strategy to deliver meaningful, measurable results.
+          </p>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-title">
+        <h2>Testimonials</h2>
+        <p>Client experiences that reflect our commitment to sustainable, meaningful growth.</p>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <article class="testimonial">
+          <p class="testimonial-quote">"Our work brought structure to ideas we’d been circling for years. Energizing and clarifying."</p>
+          <div class="testimonial-name">Harper Lane</div>
+          <div class="testimonial-role">Owner, Greenway Wellness Group</div>
+        </article>
+
+        <article class="testimonial">
+          <p class="testimonial-quote">"We left with a clear roadmap and communication tools our team uses daily."</p>
+          <div class="testimonial-name">Michael Torres</div>
+          <div class="testimonial-role">Creative Director, Northbridge Studio Co.</div>
+        </article>
+
+        <article class="testimonial">
+          <p class="testimonial-quote">"Our decision-making process completely transformed—structured, confident, aligned."</p>
+          <div class="testimonial-name">Denise Cole</div>
+          <div class="testimonial-role">Operations Lead, Harborlight Property Partners</div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-title">
+        <h2>Frequently Asked Questions</h2>
+        <p>Answers to common questions about our work, approach, and engagement structure.</p>
+      </div>
+
+      <div class="faq-grid">
+
+        <div class="faq-list">
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>What types of businesses do you work with?</h3>
+              <span class="faq-toggle">›</span>
+            </div>
+            <div class="faq-answer">
+              Primarily small to mid-sized service providers, local businesses, and owner-led organizations.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>How does an engagement begin?</h3>
+              <span class="faq-toggle">›</span>
+            </div>
+            <div class="faq-answer">
+              We start with a discovery call, then propose a scope tailored to your goals and timeline.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Do you offer ongoing support?</h3>
+              <span class="faq-toggle">›</span>
+            </div>
+            <div class="faq-answer">
+              Yes—some clients choose one-time sessions; others opt for ongoing advisory support.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>How is pricing determined?</h3>
+              <span class="faq-toggle">›</span>
+            </div>
+            <div class="faq-answer">
+              Pricing is based on scope and engagement length. A written proposal is always provided.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Do you work remotely?</h3>
+              <span class="faq-toggle">›</span>
+            </div>
+            <div class="faq-answer">
+              Yes—most engagements are fully virtual, but in-person options can be discussed.
+            </div>
+          </div>
+
+        </div>
+
+        <aside class="faq-aside">
+          <h3>Next Steps</h3>
+          <p>Contact us through the form to start with a brief conversation about your goals and needs.</p>
+          <p>Many clients begin with a single planning session, then transition into deeper or ongoing work.</p>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p>Share your goals and challenges—we’ll follow up to schedule a conversation.</p>
+      </div>
+
+      <div class="contact-card">
+
+        <form action="mailto:office.yourewelcomeconsulting@gmail.com" method="post" enctype="text/plain">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="Name" type="text" placeholder="Your name" required />
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="Email" type="email" placeholder="you@example.com" required />
+          </div>
+
+          <div class="field">
+            <label for="business">Business / Organization</label>
+            <input id="business" name="Business" type="text" placeholder="Business or organization name" />
+          </div>
+
+          <div class="field">
+            <label for="message">How can we help?</label>
+            <textarea id="message" name="Message" rows="4" placeholder="Share your goals or current challenges." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Submit Inquiry</button>
+
+          <div class="contact-note">Please include timelines or important context if applicable.</div>
+        </form>
+
+        <div class="contact-meta">
+          <p><strong>Response Time:</strong> Within two business days.</p>
+          <p><strong>Availability:</strong> Weekdays with limited evening options.</p>
+          <p><strong>Format:</strong> Virtual meetings or phone sessions.</p>
+          <p>We adapt to your preferred scheduling tools when possible.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CHATBOT -->
+  <div class="chatbot-window" id="yw-chatbot">
+    <div class="chatbot-header">
+      <div class="chatbot-header-left">
+        <div class="chatbot-avatar">
+          <!-- chatbot avatar image -->
+          <img src="images/yw-chat-logo.png" alt="YOU'RE WELCOME Consulting Chatbot logo" />
+        </div>
+        <div class="chatbot-title">
+          <span>YW Virtual Advisor</span>
+          <span>Ask strategy, operations, or planning questions.</span>
+        </div>
+      </div>
+      <button class="chatbot-close" type="button" aria-label="Close chatbot" id="chatbot-close-btn">✕</button>
+    </div>
+    <div class="chatbot-messages" id="chatbot-messages">
+      <div class="chatbot-message bot">
+        Hi! I’m the YOU’RE WELCOME Consulting virtual advisor.  
+        Ask me about strategy, workflows, client experience, or how an engagement could look for your business.
+      </div>
+    </div>
+    <div class="chatbot-footer">
+      <div class="chatbot-input-row">
+        <input
+          type="text"
+          id="chatbot-input"
+          class="chatbot-input"
+          placeholder="Ask a question about your business..."
+          autocomplete="off"
+        />
+        <button type="button" class="chatbot-send" id="chatbot-send-btn">Send</button>
+      </div>
+      <div class="chatbot-hint">
+        Try asking: <span>“How could you help streamline my operations?”</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="chatbot-launcher">
+    <button class="chatbot-button" type="button" id="chatbot-toggle" aria-label="Open YOU'RE WELCOME Consulting chatbot">
+      <!-- launcher image -->
+      <img src="images/yw-chat-logo.png" alt="Chatbot logo" />
+    </button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; <span id="year"></span> <span class="brand">YOU'RE WELCOME Consulting</span>.
+    All rights reserved. “You'll Thank Us Later.”
+  </footer>
+
+  <script>
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // FAQ toggle behavior
+    document.querySelectorAll(".faq-item").forEach(item => {
+      item.querySelector(".faq-question").addEventListener("click", () => {
+        item.classList.toggle("open");
+      });
+    });
+
+    // Chatbot behavior
+    const chatbotWindow = document.getElementById("yw-chatbot");
+    const chatbotToggle = document.getElementById("chatbot-toggle");
+    const chatbotCloseBtn = document.getElementById("chatbot-close-btn");
+    const chatbotMessages = document.getElementById("chatbot-messages");
+    const chatbotInput = document.getElementById("chatbot-input");
+    const chatbotSendBtn = document.getElementById("chatbot-send-btn");
+
+    function openChatbot() {
+      chatbotWindow.classList.add("open");
+      chatbotInput.focus();
+    }
+
+    function closeChatbot() {
+      chatbotWindow.classList.remove("open");
+    }
+
+    chatbotToggle.addEventListener("click", () => {
+      if (chatbotWindow.classList.contains("open")) {
+        closeChatbot();
+      } else {
+        openChatbot();
+      }
+    });
+
+    chatbotCloseBtn.addEventListener("click", () => {
+      closeChatbot();
+    });
+
+    function appendMessage(text, type) {
+      const bubble = document.createElement("div");
+      bubble.classList.add("chatbot-message", type);
+      bubble.textContent = text;
+      chatbotMessages.appendChild(bubble);
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+
+    function getAdvancedStyleReply(userText) {
+      const lower = userText.toLowerCase();
+
+      if (lower.includes("operations") || lower.includes("workflow")) {
+        return "From an operational standpoint, we’d start by mapping your current workflows, identifying friction points, and designing a streamlined sequence of tasks, tools, and responsibilities. From there, we’d recommend a phased rollout so your team can adjust without disruption.";
+      }
+
+      if (lower.includes("strategy") || lower.includes("growth")) {
+        return "Strategically, we’d clarify your core priorities, define what success looks like over the next 6–12 months, and then reverse-engineer a practical roadmap. That roadmap usually balances near-term wins with a sustainable long-term structure.";
+      }
+
+      if (lower.includes("pricing") || lower.includes("budget")) {
+        return "When it comes to pricing and budgeting, we look at capacity, demand, and your financial goals. The idea is to align your offers with a realistic workload, clear margins, and a structure that’s easy to explain to clients or stakeholders.";
+      }
+
+      if (lower.includes("client experience") || lower.includes("customer")) {
+        return "We’d examine the full client journey—from first contact through follow-up—and identify where clarity, communication, or process could be tightened. The goal is to create a consistent, calm experience that reflects your standards every time.";
+      }
+
+      if (lower.includes("engagement") || lower.includes("work with you") || lower.includes("consulting")) {
+        return "A typical engagement begins with a discovery conversation, followed by a written scope tailored to your goals. From there, we’ll collaborate through structured sessions, tangible documentation, and clear next steps so you always know what’s happening and why.";
+      }
+
+      return "Great question. We’d approach this by clarifying your context, defining what success looks like, and then designing a structure that fits the way you and your team naturally work. In a full engagement, we’d dive deeper into your tools, constraints, and timelines to give you specific recommendations.";
+    }
+
+    function handleChatSubmit() {
+      const text = chatbotInput.value.trim();
+      if (!text) return;
+
+      appendMessage(text, "user");
+      chatbotInput.value = "";
+      chatbotInput.focus();
+
+      // Simulated advanced-style response
+      setTimeout(() => {
+        const reply = getAdvancedStyleReply(text);
+        appendMessage(reply, "bot");
+      }, 400);
+    }
+
+    chatbotSendBtn.addEventListener("click", handleChatSubmit);
+
+    chatbotInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        handleChatSubmit();
+      }
+    });
+  </script>
+</body>
+</html>
