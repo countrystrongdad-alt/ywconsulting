@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YOU'RE WELCOME Consulting</title>
+  <title>You're Welcome Consulting</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
@@ -192,7 +192,7 @@
       gap: 0.5rem;
       padding: 0.25rem 0.8rem;
       border-radius: 999px;
-      background: #ffffff;              /* white pill */
+      background: #ffffff;
       border: 1px solid #ffffff;
       font-size: 0.75rem;
       text-transform: uppercase;
@@ -437,7 +437,7 @@
       font-size: 0.9rem;
       transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
       color: #f9fafb;
-      margin-top: -1.4rem; /* raises Engagement Snapshot to align with About text */
+      margin-top: -1.4rem;
     }
 
     .about-card:hover {
@@ -1074,10 +1074,10 @@
     <div class="container nav">
       <div class="nav-left">
         <div class="logo-mark">
-          <img src="logo.png" alt="YOU'RE WELCOME Consulting logo" />
+          <img src="logo.png" alt="You're Welcome Consulting logo" />
         </div>
         <div class="nav-titles">
-          <div class="nav-title-main">YOU'RE WELCOME Consulting</div>
+          <div class="nav-title-main">You're Welcome Consulting</div>
           <div class="nav-title-sub">Clarity. Structure. Sustainable Growth.</div>
         </div>
       </div>
@@ -1318,7 +1318,7 @@
               <span class="faq-toggle">›</span>
             </div>
             <div class="faq-answer">
-              Primarily small to mid-sized service providers, local businesses, and owner-led organizations.
+              We consult for every type of business, big and small. For more information, fill out the Contact Card and a consultant will contact you within 48 hours.
             </div>
           </div>
 
@@ -1426,7 +1426,7 @@
     <div class="chatbot-header">
       <div class="chatbot-header-left">
         <div class="chatbot-avatar">
-          <img src="images/yw-chat-logo.png" alt="YOU'RE WELCOME Consulting Chatbot logo" />
+          <img src="images/yw-chat-logo.png" alt="You're Welcome Consulting Chatbot logo" />
         </div>
         <div class="chatbot-title">
           <span>YW Virtual Advisor</span>
@@ -1437,8 +1437,7 @@
     </div>
     <div class="chatbot-messages" id="chatbot-messages">
       <div class="chatbot-message bot">
-        Hi! I’m the You're Welcome Consulting virtual advisor.  
-        I can answer questions about who we are, how we work, pricing approach, ideal clients, workflows, and how we might support your business! 😊
+Hi! I’m the You're Welcome Consulting virtual advisor. I can answer questions about who we are, how we work, pricing approach, ideal clients, workflows, and how we might support your business! 😊
       </div>
     </div>
     <div class="chatbot-footer">
@@ -1459,14 +1458,14 @@
   </div>
 
   <div class="chatbot-launcher">
-    <button class="chatbot-button" type="button" id="chatbot-toggle" aria-label="Open YOU'RE WELCOME Consulting chatbot">
+    <button class="chatbot-button" type="button" id="chatbot-toggle" aria-label="Open You're Welcome Consulting chatbot">
       <img src="images/yw-chat-logo.png" alt="Chatbot logo" />
     </button>
   </div>
 
   <!-- FOOTER -->
   <footer>
-    &copy; <span id="year"></span> <span class="brand">YOU'RE WELCOME Consulting</span>.
+    &copy; <span id="year"></span> <span class="brand">You're Welcome Consulting</span>.
     All rights reserved. “You'll Thank Us Later.”
     <span class="footer-address">390 Golf Blvd · Daytona Beach, FL 32118</span>
   </footer>
@@ -1584,7 +1583,7 @@
         "when was yw consulting formed"
       ],
       answer:
-        "You're Welcome Consulting was officially formed as a Florida limited liability company in early 2024, with the filing dated January 29, 2024. However our consultants have 10 or more years experience in the field!"
+        "You're Welcome Consulting was officially formed as a Florida limited liability company in early 2024, with the filing dated January 29, 2024."
     },
     {
       id: "legal-info",
@@ -1655,16 +1654,18 @@
         "We’re proudly based in Daytona Beach, Florida, and we work with both local and remote clients. Many engagements are fully virtual, but local conversations are always welcome."
     },
     {
-      id: "types-of-clients",
+      id: "types-of-businesses-consulted",
       patterns: [
+        "what types of businesses do you consult for",
         "what types of businesses do you work with",
+        "what kind of businesses do you consult for",
+        "who do you consult for",
         "who do you work with",
-        "ideal clients",
-        "what kind of clients",
-        "do you work with small businesses"
+        "types of businesses",
+        "kinds of businesses"
       ],
       answer:
-        "We typically work with small to mid-sized service providers, local businesses, and owner-led teams. If you’re juggling a lot of ideas, projects, or responsibilities and want more clarity and structure, you’re very much our people."
+        "We consult for every type of business, big and small! For more information fill out the Contact Card and a consultant will contact you within 48 hours!"
     },
     {
       id: "engagement-structure",
@@ -1903,7 +1904,7 @@
     }
 
     // Generic fallback
-    return "Great question! Using the Contact Card, submit your information and a consultant will contact you within 48 hours to discuss any questions you may have!";
+    return "Great question! Use the Contact Card and a consultant will contact you within 48 hours! They will be able to better answer that for you!";
   }
 
   function handleChatSubmit() {
