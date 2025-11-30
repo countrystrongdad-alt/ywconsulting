@@ -1440,7 +1440,7 @@
     <div class="chatbot-messages" id="chatbot-messages">
       <div class="chatbot-message bot">
         Hi! I’m the You're Welcome Consulting virtual advisor.  
-        I can answer questions about who we are, how we work, pricing approach, ideal clients, and how we might support your business! 😊
+        I can answer questions about who we are, how we work, pricing approach, ideal clients, workflows, and how we might support your business! 😊
       </div>
     </div>
     <div class="chatbot-footer">
@@ -1449,13 +1449,13 @@
           type="text"
           id="chatbot-input"
           class="chatbot-input"
-          placeholder="Ask something about You’re Welcome Consulting..."
+          placeholder="Ask something about You’re Welcome Consulting or your workflows..."
           autocomplete="off"
         />
         <button type="button" class="chatbot-send" id="chatbot-send-btn">Send</button>
       </div>
       <div class="chatbot-hint">
-        Try asking: <span>“How do engagements with you usually work?”</span> or <span>“Are you a good fit for a small service business?”</span>
+        Try asking: <span>“Can you give me a sample client onboarding workflow?”</span> or <span>“How should I map my processes?”</span>
       </div>
     </div>
   </div>
@@ -1670,7 +1670,33 @@
         "Most of our work is done virtually via online meetings and shared documentation. In some cases, in-person options can be discussed depending on location and scope."
     },
 
-    // ===== New: Creating Custom Workflows =====
+    // ===== Workflows: concepts and processes =====
+    {
+      id: "workflow-definition",
+      patterns: [
+        "what is a workflow",
+        "what are workflows",
+        "workflow process",
+        "define workflow",
+        "explain workflow"
+      ],
+      answer:
+        "A workflow is simply the series of steps it takes to move something from A to Z—plus who owns each step and what tools they use. A clear workflow answers three questions: 1) What happens first, second, third? 2) Who is responsible for each step? 3) What information or tools are needed to move the work forward without getting stuck."
+    },
+    {
+      id: "workflow-process",
+      patterns: [
+        "how do i build a workflow",
+        "how do i design a workflow",
+        "how do i map a process",
+        "steps to create a workflow",
+        "how should i map my processes"
+      ],
+      answer:
+        "To build a workflow, we usually walk through five steps: 1) Choose one process (for example, client onboarding). 2) Brain-dump every step you currently take, in rough order. 3) Clean it up—remove duplicate steps, clarify who does what, and name each step clearly. 4) Add triggers and outputs (what starts the workflow and what “done” looks like). 5) Decide where templates, checklists, or automation could make the workflow repeatable. The result is a simple map you can share with your team."
+    },
+
+    // ===== Custom workflows (YW-specific) =====
     {
       id: "custom-workflows",
       patterns: [
@@ -1685,10 +1711,46 @@
         "business workflow"
       ],
       answer:
-        "When we create custom workflows, we start by mapping the real steps your team takes—from first client contact through delivery and follow-up. Then we simplify: remove unnecessary steps, clarify who does what, and decide which tasks can be automated. The result is a clear, repeatable path that reduces errors, speeds things up, and makes ownership obvious instead of vague."
+        "When we create custom workflows with clients, we start by mapping the real steps your team takes—from first contact through delivery and follow-up. Then we simplify: remove unnecessary steps, clarify who does what, and decide which tasks can be automated or templated. For example, a simple service workflow might be:\n\n1) Lead comes in via form or email.\n2) Auto-response goes out with basic info and a scheduling link.\n3) Discovery call is held and notes are captured in one place.\n4) Proposal or summary email is sent within a set timeframe.\n5) Once accepted, a standard onboarding checklist is triggered.\n\nThe goal is a clear, repeatable path that reduces errors, speeds things up, and makes ownership obvious instead of vague."
     },
 
-    // ===== New: Business consulting techniques =====
+    // ===== Concrete workflow examples =====
+    {
+      id: "workflow-example-onboarding",
+      patterns: [
+        "example client onboarding workflow",
+        "client onboarding workflow",
+        "onboarding workflow example",
+        "how should client onboarding work",
+        "sample onboarding process"
+      ],
+      answer:
+        "Here’s a simple example of a client onboarding workflow for a small service business:\n\n1) Inquiry received → captured in a single place (CRM, spreadsheet, or inbox label).\n2) Auto-reply sent → thanks them, shares basics, and includes a booking link.\n3) Discovery call → you confirm fit, budget, and timeline; take structured notes.\n4) Proposal or recap email → sent within 24–48 hours with scope, pricing, and next steps.\n5) Client accepts → you send a welcome email, agreement, and first invoice.\n6) Internal kickoff → you start an internal checklist for setup tasks and deadlines.\n7) First working session scheduled → the client knows exactly what happens next.\n\nWe adapt this pattern to match your tools and the way your business actually operates."
+    },
+    {
+      id: "workflow-example-service-delivery",
+      patterns: [
+        "workflow example for a service business",
+        "example workflow for service delivery",
+        "service delivery workflow",
+        "project workflow example"
+      ],
+      answer:
+        "A basic service delivery workflow might look like this:\n\n1) Project created → name, due dates, and owner assigned.\n2) Scope broken into tasks → each task gets an owner and deadline.\n3) Weekly review → you or a manager quickly review tasks due this week.\n4) In-progress work → team updates task statuses and leaves notes in one place.\n5) Quality check → before anything goes to the client, a quick internal review happens.\n6) Client delivery → you send the work with a clear summary of what was done.\n7) Follow-up → you ask for feedback, close the project, and log any lessons learned.\n\nThe details change by industry, but the structure—create, break down, execute, review, deliver, follow up—stays similar."
+    },
+    {
+      id: "workflow-example-internal-ops",
+      patterns: [
+        "example internal workflow",
+        "back office workflow",
+        "internal operations workflow",
+        "admin workflow example"
+      ],
+      answer:
+        "For internal operations (like billing or admin), a workflow example could be:\n\n1) Time or deliverables logged by the team.\n2) At a set time each week/month, invoices are generated from that log.\n3) Invoices are reviewed for accuracy by one person.\n4) Invoices are emailed or sent through your billing platform.\n5) Payments are tracked; overdue invoices trigger a friendly reminder template.\n6) Once paid, the project or period is marked as closed and metrics are updated.\n\nWe help you formalize these kinds of internal workflows so they stop living only in someone’s memory."
+    },
+
+    // ===== Consulting techniques =====
     {
       id: "consulting-techniques",
       patterns: [
@@ -1703,7 +1765,7 @@
         "Good consulting is more than dropping advice and disappearing. Our approach usually follows a loop: clarify goals, diagnose what’s really happening, co-design solutions with you, support implementation, and then review what’s working. We use tools like process mapping, value-stream style thinking, prioritization frameworks, and simple scorecards so you can actually see progress instead of guessing."
     },
 
-    // ===== New: Impact of hiring a consultant =====
+    // ===== Impact of hiring a consultant =====
     {
       id: "consultant-impact",
       patterns: [
@@ -1718,7 +1780,7 @@
         "Hiring a consultant gives you focused expertise and an outside perspective. Practically, that can mean: spotting blind spots, avoiding costly mistakes, speeding up decisions, reducing reliance on the owner, and turning vague ideas into a clear plan. A good consultant often pays for themselves through time saved, smoother operations, and better-quality decisions."
     },
 
-    // ===== New: General business management info =====
+    // ===== General business management info =====
     {
       id: "business-management",
       patterns: [
@@ -1733,7 +1795,6 @@
       answer:
         "Most management boils down to a few core jobs: planning (deciding where you’re going), organizing (setting up people, roles, and resources), leading (communicating and motivating humans), and controlling (tracking results and adjusting). We help clients build simple systems around those functions so the business isn’t just living in one person’s head."
     },
-
     {
       id: "operations-workflows",
       patterns: [
@@ -1794,7 +1855,7 @@
     }
 
     if (lower.includes("workflow")) {
-      return "In general, a good workflow is a clear set of steps, in the right order, with clear owners. When we work with clients, we map what’s happening now, remove extra steps, assign responsibilities, and look for places where automation or templates can save time and reduce errors.";
+      return "In general, a good workflow is a clear set of steps, in the right order, with clear owners. When we work with clients, we map what’s happening now, remove extra steps, assign responsibilities, and look for places where templates or automation can save time and reduce errors. If you’d like a concrete example, try asking something like “Can you give me a sample client onboarding workflow?”";
     }
 
     if (lower.includes("consultant")) {
