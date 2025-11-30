@@ -962,6 +962,7 @@
       border-radius: 12px;
       font-size: 0.8rem;
       line-height: 1.5;
+      white-space: pre-wrap; /* allow multi-line, “paragraph-y” answers */
     }
 
     .chatbot-message.bot {
@@ -1423,7 +1424,7 @@
         </div>
         <div class="chatbot-title">
           <span>YW Virtual Advisor</span>
-          <span>Ask strategy, operations, or planning questions.</span>
+          <span>Ask about our work, process, or fit.</span>
         </div>
       </div>
       <button class="chatbot-close" type="button" aria-label="Close chatbot" id="chatbot-close-btn">✕</button>
@@ -1431,7 +1432,7 @@
     <div class="chatbot-messages" id="chatbot-messages">
       <div class="chatbot-message bot">
         Hi! I’m the YOU’RE WELCOME Consulting virtual advisor.  
-        Ask me about strategy, workflows, client experience, or how an engagement could look for your business.
+        I can answer questions about who we are, how we work, pricing approach, ideal clients, and how we might support your business—sprinkled with a little polite humor. 😊
       </div>
     </div>
     <div class="chatbot-footer">
@@ -1440,13 +1441,13 @@
           type="text"
           id="chatbot-input"
           class="chatbot-input"
-          placeholder="Ask a question about your business..."
+          placeholder="Ask something about You’re Welcome Consulting..."
           autocomplete="off"
         />
         <button type="button" class="chatbot-send" id="chatbot-send-btn">Send</button>
       </div>
       <div class="chatbot-hint">
-        Try asking: <span>“How could you help streamline my operations?”</span>
+        Try asking: <span>“How do engagements with you usually work?”</span> or <span>“Are you a good fit for a small service business?”</span>
       </div>
     </div>
   </div>
@@ -1465,102 +1466,287 @@
   </footer>
 
   <script>
-    // Footer year
-    document.getElementById("year").textContent = new Date().getFullYear();
+  // Footer year
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-    // FAQ toggle behavior
-    document.querySelectorAll(".faq-item").forEach(item => {
-      item.querySelector(".faq-question").addEventListener("click", () => {
-        item.classList.toggle("open");
-      });
+  // FAQ toggle behavior
+  document.querySelectorAll(".faq-item").forEach(item => {
+    item.querySelector(".faq-question").addEventListener("click", () => {
+      item.classList.toggle("open");
     });
+  });
 
-    // Chatbot behavior
-    const chatbotWindow = document.getElementById("yw-chatbot");
-    const chatbotToggle = document.getElementById("chatbot-toggle");
-    const chatbotCloseBtn = document.getElementById("chatbot-close-btn");
-    const chatbotMessages = document.getElementById("chatbot-messages");
-    const chatbotInput = document.getElementById("chatbot-input");
-    const chatbotSendBtn = document.getElementById("chatbot-send-btn");
+  // ==========================
+  // CHATBOT LOGIC (NO BACKEND)
+  // ==========================
 
-    function openChatbot() {
-      chatbotWindow.classList.add("open");
-      chatbotInput.focus();
-    }
+  const chatbotWindow = document.getElementById("yw-chatbot");
+  const chatbotToggle = document.getElementById("chatbot-toggle");
+  const chatbotCloseBtn = document.getElementById("chatbot-close-btn");
+  const chatbotMessages = document.getElementById("chatbot-messages");
+  const chatbotInput = document.getElementById("chatbot-input");
+  const chatbotSendBtn = document.getElementById("chatbot-send-btn");
 
-    function closeChatbot() {
-      chatbotWindow.classList.remove("open");
-    }
+  function openChatbot() {
+    chatbotWindow.classList.add("open");
+    chatbotInput.focus();
+  }
 
-    chatbotToggle.addEventListener("click", () => {
-      if (chatbotWindow.classList.contains("open")) {
-        closeChatbot();
-      } else {
-        openChatbot();
-      }
-    });
+  function closeChatbot() {
+    chatbotWindow.classList.remove("open");
+  }
 
-    chatbotCloseBtn.addEventListener("click", () => {
+  chatbotToggle.addEventListener("click", () => {
+    if (chatbotWindow.classList.contains("open")) {
       closeChatbot();
-    });
+    } else {
+      openChatbot();
+    }
+  });
 
-    function appendMessage(text, type) {
-      const bubble = document.createElement("div");
-      bubble.classList.add("chatbot-message", type);
-      bubble.textContent = text;
-      chatbotMessages.appendChild(bubble);
-      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  chatbotCloseBtn.addEventListener("click", () => {
+    closeChatbot();
+  });
+
+  function appendMessage(text, type) {
+    const bubble = document.createElement("div");
+    bubble.classList.add("chatbot-message", type);
+    bubble.textContent = text;
+    chatbotMessages.appendChild(bubble);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  }
+
+  // -------------------------
+  // Knowledge base for YW Consulting
+  // -------------------------
+  const ywKnowledge = [
+    {
+      id: "what-is",
+      patterns: [
+        "what is you're welcome consulting",
+        "what is youre welcome consulting",
+        "what do you do",
+        "what does you're welcome consulting do",
+        "who are you",
+        "what kind of consulting",
+        "tell me about you're welcome"
+      ],
+      answer:
+        "You’re Welcome Consulting is a woman-owned consulting firm based in Daytona Beach, Florida. We help service-based and owner-led businesses with strategy, operations, workflows, client experience design, and custom support so your growth actually feels manageable."
+    },
+    {
+      id: "where-located",
+      patterns: [
+        "where are you located",
+        "where is you're welcome consulting",
+        "what is your address",
+        "where are you based",
+        "location"
+      ],
+      answer:
+        "We’re based in Daytona Beach, Florida. Our principal business address is 390 Golf Blvd, Daytona Beach, FL 32118."
+    },
+    {
+      id: "who-owns",
+      patterns: [
+        "who owns",
+        "who is the owner",
+        "who is the ceo",
+        "who runs you're welcome consulting",
+        "owner",
+        "founder",
+        "woman owned"
+      ],
+      answer:
+        "You’re Welcome Consulting is owned and led by Maria J. Pavano. It’s a woman-owned consulting firm with a strong focus on practical strategy, structure, and sustainable growth."
+    },
+    {
+      id: "when-founded",
+      patterns: [
+        "when were you founded",
+        "when did you start",
+        "how long have you been in business",
+        "what year were you founded"
+      ],
+      answer:
+        "You’re Welcome Consulting was formed in early 2024 as a Florida limited liability company and has been actively supporting clients since then."
+    },
+    {
+      id: "services-general",
+      patterns: [
+        "what services do you offer",
+        "what do you offer",
+        "services",
+        "how can you help my business",
+        "what can you help with"
+      ],
+      answer:
+        "We focus on strategy, project and operations planning, workflow design, client experience, communication frameworks, and overall business structure. In plain English: we help you untangle the chaos, make a clear plan, and move forward in a focused, sustainable way."
+    },
+    {
+      id: "custom-webpages",
+      patterns: [
+        "website",
+        "web site",
+        "web design",
+        "web pages",
+        "webpages",
+        "custom webpage",
+        "custom website",
+        "do you build websites",
+        "do you make websites"
+      ],
+      answer:
+        "Yes—we create custom webpages tailored to each client’s needs. That can include clean, modern marketing sites, service pages, and supportive pages that match your brand, systems, and the way you actually work."
+    },
+    {
+      id: "daytona-beach",
+      patterns: [
+        "daytona beach",
+        "in florida",
+        "local to daytona",
+        "are you in florida"
+      ],
+      answer:
+        "We’re proudly based in Daytona Beach, Florida, and we work with both local and remote clients. Many engagements are virtual, but local conversations are always welcome."
+    },
+    {
+      id: "types-of-clients",
+      patterns: [
+        "what types of businesses do you work with",
+        "who do you work with",
+        "ideal clients",
+        "what kind of clients",
+        "do you work with small businesses"
+      ],
+      answer:
+        "We typically work with small to mid-sized service providers, local businesses, and owner-led teams. If you’re juggling a lot of ideas, projects, or responsibilities and want more clarity and structure, you’re very much our people."
+    },
+    {
+      id: "engagement-structure",
+      patterns: [
+        "how does an engagement begin",
+        "how do we start",
+        "what does working together look like",
+        "engagement",
+        "process",
+        "how do you work"
+      ],
+      answer:
+        "Most engagements start with a discovery conversation about your goals, challenges, and timeline. From there, we outline a tailored scope: structured sessions, clear priorities, action plans, and documentation so you always know what’s happening and why."
+    },
+    {
+      id: "pricing",
+      patterns: [
+        "how is pricing determined",
+        "pricing",
+        "how much do you cost",
+        "rates",
+        "budget"
+      ],
+      answer:
+        "Pricing depends on the scope, complexity, and length of the engagement. We don’t do one-size-fits-all packages—you’ll always receive a written proposal with a clear breakdown before anything begins."
+    },
+    {
+      id: "remote-work",
+      patterns: [
+        "do you work remotely",
+        "virtual",
+        "online",
+        "zoom",
+        "remote",
+        "in person"
+      ],
+      answer:
+        "Most of our work is done virtually via online meetings and shared documentation. In some cases, in-person options can be discussed depending on location and scope."
+    },
+    {
+      id: "operations-workflows",
+      patterns: [
+        "operations",
+        "workflow",
+        "workflows",
+        "processes",
+        "systems",
+        "streamline"
+      ],
+      answer:
+        "On the operations side, we help you map out what’s actually happening in your business, spot friction points, and redesign workflows, roles, and tools so things feel smoother and more predictable. Less chaos, more ‘oh, this finally makes sense.’"
+    },
+    {
+      id: "strategy-growth",
+      patterns: [
+        "strategy",
+        "growth",
+        "roadmap",
+        "planning",
+        "plan for growth",
+        "scaling"
+      ],
+      answer:
+        "Strategically, we clarify your priorities, define what success looks like over the next 6–12 months, and then reverse-engineer a realistic roadmap. We balance quick wins with long-term structure so you’re not burning out while you grow."
+    },
+    {
+      id: "client-experience",
+      patterns: [
+        "client experience",
+        "customer experience",
+        "customer journey",
+        "customer service",
+        "client journey"
+      ],
+      answer:
+        "We look at your full client journey—from first contact to ongoing relationship—and tighten the communication, expectations, and touchpoints. The goal is a calm, consistent experience that feels as good for your clients as it does for you."
+    }
+  ];
+
+  function findKnowledgeAnswer(userText) {
+    const lower = userText.toLowerCase();
+
+    // Try pattern-based matches first
+    for (const entry of ywKnowledge) {
+      if (entry.patterns.some(p => lower.includes(p))) {
+        return entry.answer;
+      }
     }
 
-    function getAdvancedStyleReply(userText) {
-      const lower = userText.toLowerCase();
-
-      if (lower.includes("operations") || lower.includes("workflow")) {
-        return "From an operational standpoint, we’d start by mapping your current workflows, identifying friction points, and designing a streamlined sequence of tasks, tools, and responsibilities. From there, we’d recommend a phased rollout so your team can adjust without disruption.";
-      }
-
-      if (lower.includes("strategy") || lower.includes("growth")) {
-        return "Strategically, we’d clarify your core priorities, define what success looks like over the next 6–12 months, and then reverse-engineer a practical roadmap. That roadmap usually balances near-term wins with a sustainable long-term structure.";
-      }
-
-      if (lower.includes("pricing") || lower.includes("budget")) {
-        return "When it comes to pricing and budgeting, we look at capacity, demand, and your financial goals. The idea is to align your offers with a realistic workload, clear margins, and a structure that’s easy to explain to clients or stakeholders.";
-      }
-
-      if (lower.includes("client experience") || lower.includes("customer")) {
-        return "We’d examine the full client journey—from first contact through follow-up—and identify where clarity, communication, or process could be tightened. The goal is to create a consistent, calm experience that reflects your standards every time.";
-      }
-
-      if (lower.includes("engagement") || lower.includes("work with you") || lower.includes("consulting")) {
-        return "A typical engagement begins with a discovery conversation, followed by a written scope tailored to your goals. From there, we’ll collaborate through structured sessions, tangible documentation, and clear next steps so you always know what’s happening and why.";
-      }
-
-      return "Great question. We’d approach this by clarifying your context, defining what success looks like, and then designing a structure that fits the way you and your team naturally work. In a full engagement, we’d dive deeper into your tools, constraints, and timelines to give you specific recommendations.";
+    // Some extra heuristic rules
+    if (lower.includes("email") || lower.includes("contact")) {
+      return "The easiest way to reach us is through the contact form on this page. Your message goes to office.yourewelcomeconsulting@gmail.com, and we typically respond within two business days.";
     }
 
-    function handleChatSubmit() {
-      const text = chatbotInput.value.trim();
-      if (!text) return;
-
-      appendMessage(text, "user");
-      chatbotInput.value = "";
-      chatbotInput.focus();
-
-      // Simulated advanced-style response
-      setTimeout(() => {
-        const reply = getAdvancedStyleReply(text);
-        appendMessage(reply, "bot");
-      }, 400);
+    if (lower.includes("humor") || lower.includes("fun") || lower.includes("personality")) {
+      return "We take your business seriously—but we don’t believe strategy has to feel like a root canal. Expect clarity, structure, and the occasional well-timed joke to keep things human.";
     }
 
-    chatbotSendBtn.addEventListener("click", handleChatSubmit);
+    // Generic, but still helpful, fallback
+    return "Great question. Without seeing the full context of your business, I’d start by clarifying your goals, mapping what’s already on your plate, and then designing a step-by-step plan that fits your capacity. If you’d like tailored recommendations, reach out through the contact form and we can dig into your specific situation.";
+  }
 
-    chatbotInput.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" && !e.shiftKey) {
-        e.preventDefault();
-        handleChatSubmit();
-      }
-    });
-  </script>
+  function handleChatSubmit() {
+    const text = chatbotInput.value.trim();
+    if (!text) return;
+
+    appendMessage(text, "user");
+    chatbotInput.value = "";
+    chatbotInput.focus();
+
+    // Simulated “AI-style” response using our knowledge base
+    setTimeout(() => {
+      const reply = findKnowledgeAnswer(text);
+      appendMessage(reply, "bot");
+    }, 350);
+  }
+
+  chatbotSendBtn.addEventListener("click", handleChatSubmit);
+
+  chatbotInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleChatSubmit();
+    }
+  });
+</script>
+
 </body>
 </html>
